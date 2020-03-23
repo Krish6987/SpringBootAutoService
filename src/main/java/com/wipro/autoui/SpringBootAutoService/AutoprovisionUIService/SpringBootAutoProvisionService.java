@@ -16,7 +16,7 @@ public class SpringBootAutoProvisionService {
 	
 	@GetMapping("/test")
 	public String sample() {
-		return "Microservice is working!!!";
+		return "Microservice is working good!!!";
 	}
 
 	@GetMapping("/install/{tool}/{ip_address}/{password}")
