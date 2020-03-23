@@ -32,7 +32,7 @@ public class SpringBootAutoProvisionService {
 		    Process process = processBuilder.start();
 		    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 		    String line;
-		    while ((line = reader1.readLine()) != null) {
+		    while ((line = reader.readLine()) != null) {
 			System.out.println(line);
 		    }
 		    errorCode = process.waitFor();
@@ -47,7 +47,7 @@ public class SpringBootAutoProvisionService {
 		    Process process1 = processBuilder.start();
 		    BufferedReader reader1 = new BufferedReader(new InputStreamReader(process1.getInputStream()));
 		    String line1;
-		    while ((line1 = reader.readLine()) != null) {
+		    while ((line1 = reader1.readLine()) != null) {
 			System.out.println(line1);
 		    }
 		    errorCode = process1.waitFor();
