@@ -24,22 +24,23 @@ public class SpringBootAutoProvisionService {
 		
 		ProcessBuilder processBuilder = new ProcessBuilder();
 		int errorCode = 127;
+		System.out.println(password+" "+ip_address+" "+tool);
 		processBuilder.command("bash", "-c", "sshpass -p '"+password+"' ssh-copy-id -i /home/ansadmin/.ssh/id_rsa.pub ansadmin@"+ip_address+" -o StrictHostKeyChecking=no" );
-        processBuilder.command("bash", "-c", "ansible-playbook /home/ansadmin/"+tool+".yml -i "+ip_address+", -e 'target="+ip_address+"'" );
-        try {
-            Process process = processBuilder.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-            errorCode = process.waitFor();
-            System.out.println("\nExited with error code : " + errorCode);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }		
-		return errorCode;
+     		processBuilder.command("bash", "-c", "ansible-playbook /home/ansadmin/"+tool+".yml -i "+ip_address+", -e 'target="+ip_address+"'" );
+		try {
+		    Process process = processBuilder.start();
+		    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+		    String line;
+		    while ((line = reader.readLine()) != null) {
+			System.out.println(line);
+		    }
+		    errorCode = process.waitFor();
+		    System.out.println("\nExited with error code : " + errorCode);
+		} catch (IOException e) {
+		    e.printStackTrace();
+		} catch (InterruptedException e) {
+		    e.printStackTrace();
+		}		
+			return errorCode;
 	}
 }
