@@ -27,7 +27,7 @@ public class SpringBootAutoProvisionService {
 		System.out.println("sshpass -p '"+password+"' ssh-copy-id root@"+ip_address+" -o StrictHostKeyChecking=no");
 		System.out.println("ansible-playbook /home/ansadmin/"+tool+".yml -i "+ip_address+", -e 'target="+ip_address+"'");
 		processBuilder.command("bash", "-c", "sshpass -p '"+password+"' ssh-copy-id root@"+ip_address+" -o StrictHostKeyChecking=no" );
-     		//processBuilder.command("bash", "-c", "ansible-playbook /home/ansadmin/"+tool+".yml -i "+ip_address+", -e 'target="+ip_address+"'" );
+     		processBuilder.command("bash", "-c", "ansible-playbook /home/ansadmin/"+tool+".yml -i "+ip_address+", -e 'target="+ip_address+"'" );
 		try {
 		    Process process = processBuilder.start();
 		    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
