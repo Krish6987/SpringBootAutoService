@@ -25,7 +25,7 @@ public class SpringBootAutoProvisionService {
 		ProcessBuilder processBuilder = new ProcessBuilder();
 		int errorCode = 127;
 		System.out.println(password+" "+ip_address+" "+tool);
-		processBuilder.command("bash", "-c", "su ansadmin && sshpass -p '"+password+"' ssh-copy-id ansadmin@"+ip_address+" -o StrictHostKeyChecking=no" );
+		processBuilder.command("bash", "-c", "sshpass -p '"+password+"' ssh-copy-id -i /home/ansadmin/.ssh/id_rsa.pub ansadmin@"+ip_address+" -o StrictHostKeyChecking=no" );
      		//processBuilder.command("bash", "-c", "ansible-playbook /home/ansadmin/"+tool+".yml -i "+ip_address+", -e 'target="+ip_address+"'" );
 		try {
 		    Process process = processBuilder.start();
