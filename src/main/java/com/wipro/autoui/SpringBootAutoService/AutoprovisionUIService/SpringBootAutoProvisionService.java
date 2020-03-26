@@ -42,7 +42,7 @@ public class SpringBootAutoProvisionService {
 		}
 		if(errorCode == 0){
 			System.out.println("SSH successful");
-			processBuilder.command("bash", "-c", "ansible-playbook /usr/src/app/playbooks/"+tool+".yml -i "+ip_address+", -e 'target="+ip_address+"'" );
+			processBuilder.command("bash", "-c", "ansible-playbook /usr/src/app/playbooks/"+tool+".yml -i "+ip_address+", -e 'target="+ip_address+"' --key-file /usr/src/app/root/.ssh/id_rsa" );
 			try {
 			    Process process1 = processBuilder.start();
 			    BufferedReader reader1 = new BufferedReader(new InputStreamReader(process1.getInputStream()));
