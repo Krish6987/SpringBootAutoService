@@ -41,6 +41,7 @@ public class SpringBootAutoProvisionService {
 		    e.printStackTrace();
 		}
 		if(errorCode == 0){
+			System.out.println("SSH successful");
 			processBuilder.command("bash", "-c", "ansible-playbook /home/ansadmin/"+tool+".yml -i "+ip_address+", -e 'target="+ip_address+"'" );
 			try {
 			    Process process1 = processBuilder.start();
