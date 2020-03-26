@@ -42,7 +42,7 @@ public class SpringBootAutoProvisionService {
 		}
 		if(errorCode == 0){
 			if(tool.equals("sonarqube"){
-				processBuilder.command("bash", "-c", "ansible-playbook /usr/src/app/playbooks/psql.yml -i "+ip_address+", -e 'target="+ip_address+"' --key-file /usr/src/app/root/.ssh/id_rsa");     
+				processBuilder.command("bash", "-c", "ansible-playbook /home/ansadmin/"+tool+".yml -i "+ip_address+", -e 'target="+ip_address+"'" );
 				try {
 				    Process process2 = processBuilder.start();
 				    BufferedReader reader2 = new BufferedReader(new InputStreamReader(process2.getInputStream()));
