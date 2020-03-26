@@ -43,20 +43,20 @@ public class SpringBootAutoProvisionService {
 		if(errorCode == 0){
 			if(tool.equals("sonarqube"){
 				processBuilder.command("bash", "-c", "ansible-playbook /usr/src/app/playbooks/psql.yml -i "+ip_address+", -e 'target="+ip_address+"' --key-file /usr/src/app/root/.ssh/id_rsa" );
-			try {
-			    Process process1 = processBuilder.start();
-			    BufferedReader reader1 = new BufferedReader(new InputStreamReader(process1.getInputStream()));
-			    String line1;
-			    while ((line1 = reader1.readLine()) != null) {
-				System.out.println(line1);
-			    }
-			    errorCode = process1.waitFor();
-			    System.out.println("\nExited with error code : " + errorCode);
-			} catch (IOException e) {
-			    e.printStackTrace();
-			} catch (InterruptedException e) {
-			    e.printStackTrace();
-			}
+				try {
+				    Process process2 = processBuilder.start();
+				    BufferedReader reader2 = new BufferedReader(new InputStreamReader(process2.getInputStream()));
+				    String line2;
+				    while ((line2 = reader2.readLine()) != null) {
+					System.out.println(line2);
+				    }
+				    errorCode = process2.waitFor();
+				    System.out.println("\nExited with error code : " + errorCode);
+				} catch (IOException e) {
+				    e.printStackTrace();
+				} catch (InterruptedException e) {
+				    e.printStackTrace();
+				}
 			}
 			processBuilder.command("bash", "-c", "ansible-playbook /usr/src/app/playbooks/"+tool+".yml -i "+ip_address+", -e 'target="+ip_address+"' --key-file /usr/src/app/root/.ssh/id_rsa" );
 			try {
