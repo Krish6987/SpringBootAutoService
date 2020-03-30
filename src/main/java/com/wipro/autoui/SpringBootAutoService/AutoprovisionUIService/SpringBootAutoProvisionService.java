@@ -20,7 +20,7 @@ public class SpringBootAutoProvisionService {
 	}
 
 	@GetMapping("/install/{tool}/{ip_address}/{password}")
-	public int installTool(@PathVariable String tool, @PathVariable String ip_address, @PathVariable String password) {
+	public String installTool(@PathVariable String tool, @PathVariable String ip_address, @PathVariable String password) {
 		
 		ProcessBuilder processBuilder = new ProcessBuilder();
 		int errorCode = 127;
@@ -62,6 +62,6 @@ public class SpringBootAutoProvisionService {
 			    e.printStackTrace();
 			}
 		}
-		return errorCode;
+		return tool+" "+errorCode;
 	}
 }
