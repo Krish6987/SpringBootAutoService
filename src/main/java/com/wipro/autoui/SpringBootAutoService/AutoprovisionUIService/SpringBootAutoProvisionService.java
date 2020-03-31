@@ -22,7 +22,7 @@ public class SpringBootAutoProvisionService {
 	public String decryptPassword(@PathVariable String password) {
 
         String originalString= "";
-		try
+	try
         {
             String key = "5718648924699618";
             String iv = "5718648924699618";
