@@ -18,7 +18,7 @@ public class SpringBootAutoProvisionService {
 	public String sample() {
 		return "Microservice is working good!!!";
 	}
-	@GetMapping("/secureinstall/{tool}/{ip_address}/{password}")
+	@GetMapping("/secureinstall/{tool}/{ip_address}/{encryptedPassword}")
 	public String secureInstall(@PathVariable String tool, @PathVariable String ip_address, @PathVariable String encryptedPassword) {
 
 		String password= "";
