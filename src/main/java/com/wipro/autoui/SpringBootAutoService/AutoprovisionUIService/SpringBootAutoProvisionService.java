@@ -45,7 +45,6 @@ public class SpringBootAutoProvisionService {
 
 		    byte[] original = cipher.doFinal(encrypted1);
 		    password = new String(original);
-		    System.out.println(originalString.trim());
 		}
 		catch (Exception e) {
 		    e.printStackTrace();
