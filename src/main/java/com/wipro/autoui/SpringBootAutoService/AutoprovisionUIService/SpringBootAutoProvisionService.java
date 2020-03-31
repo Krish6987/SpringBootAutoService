@@ -18,6 +18,33 @@ public class SpringBootAutoProvisionService {
 	public String sample() {
 		return "Microservice is working good!!!";
 	}
+	@GetMapping("/test/{password}")
+	public String decryptPassword(@PathVariable String password) {
+
+        String originalString= "";
+		try
+        {
+            String key = "5718648924699618";
+            String iv = "5718648924699618";
+
+            Decoder decoder = Base64.getDecoder();   
+             byte[] encrypted1 = decoder.decode(password);
+
+            Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding");
+            SecretKeySpec keyspec = new SecretKeySpec(key.getBytes(), "AES");
+            IvParameterSpec ivspec = new IvParameterSpec(iv.getBytes());
+
+            cipher.init(Cipher.DECRYPT_MODE, keyspec, ivspec);
+
+            byte[] original = cipher.doFinal(encrypted1);
+            originalString = new String(original);
+            System.out.println(originalString.trim());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+		return originalString+"       "+password;
+	}
 
 	@GetMapping("/install/{tool}/{ip_address}/{password}")
 	public String installTool(@PathVariable String tool, @PathVariable String ip_address, @PathVariable String password) {
