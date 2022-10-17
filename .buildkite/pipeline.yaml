@@ -1,0 +1,4 @@
+steps:
+  - command: "ls"
+    agents:
+      queue: "my-bk1"
